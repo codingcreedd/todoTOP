@@ -71,12 +71,63 @@ body{
     font-size: 1.1rem;
     color: var(--main-color);
     transition: 0.45s;
+    position: relative;
 }
 
-.navigation .adding-class:hover{
-    background: black;
-    color: white;
+.navigation  .project-form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 125px;
+    border-radius: 10px;
+    padding: 0 4%;
+    margin-left: 15%;
+    background: var(--main-color);
+    display: none;
+    
+}
+
+.project-form input{
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 20px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 10px;
+}
+
+.project-form input:focus{
+    outline: none;
+}
+
+.project-form input::placeholder{
+    opacity: 1;
+    color: var(--main-color);
+}
+
+.project-form .buttons-div{
+    display: flex;
+    width: 95%;
+    margin-left: 2.5%;
+    gap: 7%;
+}
+
+.buttons-div button{
+    width: 45%;
+    height: 40px;
+    flex: 1;
     cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    transition: 0.4s;
+}
+
+.buttons-div button:hover{
+    background: white;
+    color: var(--main-color);
 }
 
 .navigation .adding-class .add-project-btn{
@@ -85,6 +136,11 @@ body{
     font-size: 1.7rem;
     margin-right: 20px;
     cursor:pointer;
+    transition: 0.3s;
+}
+
+.navigation .add-project-btn:hover{
+    color: black;
 }
 
 /*projects*/
@@ -93,17 +149,20 @@ body{
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: var(--list-padding);
     overflow: scroll;
 }
 
 .projects .project{
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
     font-size: 1.1rem;
+    cursor: pointer;
+    padding: var(--list-padding);
+    transition: 0.3s;
 }
 
 .projects .project:hover{
-
+    color: var(--main-color);
 }
