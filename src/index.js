@@ -3,14 +3,18 @@ import '../styles/mainStyles.css';
 
 export default function toDoModule() {
     const todolist = [];
+    const currentScreen = 'Home';
 
-    const createToDo = (description, projectName = '') => {
+    const createToDo = (title, description, projectName = '') => {
         return {
+            title: title,
             description: description,
+            page: 'Home',
             status: 'pending', //two statuses: pending & done
             important: false,
             today: false,
             ['this-week']: false,
+            finished: false,
             project: projectName
         }
     };
@@ -19,13 +23,9 @@ export default function toDoModule() {
         todolist.push(todo);
     };
 
-    const deleteToDo = (todo) => {
-        todolist = todolist.filter(item => item === todo);
-    };
-
     return {
         createToDo,
         addToDo,
-        deleteToDo,
+        todolist,
     };
 }
