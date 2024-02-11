@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<script defer src="bundle.js"></script></head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+
+            <ul>
+                <li><i class='bx bx-home-alt'></i>Home</li>
+                <li><i class='bx bxs-calendar-event'></i>Today</li>
+                <li><i class='bx bx-calendar' ></i>This week</li>
+                <li><i class='bx bxs-star'></i>Important</li>
+            </ul>
+
+            <span></span>
+
+            <div class="adding-class">
+                <i class='bx bx-plus add-project-btn' ></i>
+                <p>Add Project</p>
+            </div>
+        </nav>
+
+        <div class="main-tasks">
+            <div class="heading">
+                <i class="page-icon bx bx-home-alt"></i>
+                <p class="page-title">Home</p>
+                <i class='bx bx-plus add-task-btn' ></i>
+                <p>Add Task</p>
+            </div>
+            <div class="tasks">
+                <div class="task">
+                    <i class='bx bx-radio-circle' ></i>
+                    <p>Task Description</p>
+
+                    <div class="task-nav">
+                        <i class='bx bx-calendar' >
+                            <span>
+                                <input type="date" style="border: none; opacity: 0;">
+                            </span>
+                        </i>
+                        <i class='bx bxs-pencil'></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-trash-alt' ></i>
+                    </div>
+                </div>
+
+                <div class="task">
+                    <i class='bx bx-radio-circle' ></i>
+                    <p>Task Description</p>
+
+                    <div class="task-nav">
+                        <i class='bx bx-calendar' >
+                            <span>
+                                <input type="date" style="border: none; opacity: 0;">
+                            </span>
+                        </i>
+                        <i class='bx bxs-pencil'></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-trash-alt' ></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="task-form-container" style="display: none;">
+            <div class="task-form">
+                <input class="task-input" type="text">
+                <div style="display: flex;">
+                    <button class="add-input-btn">Add</button>
+                    <button class="cancel-input-btn">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
