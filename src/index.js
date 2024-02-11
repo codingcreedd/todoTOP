@@ -1,8 +1,9 @@
 import '../styles/taskPage.css';
 import '../styles/mainStyles.css';
 
+export const todolist = [];
+
 export default function toDoModule() {
-    const todolist = [];
     const currentScreen = 'Home';
 
     const createToDo = (title, description, projectName = '') => {

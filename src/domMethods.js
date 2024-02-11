@@ -1,4 +1,5 @@
 import toDoModule from ".";
+import { todolist } from './index.js';
 import {removeTaskFormInputs, addTaskOnScreen} from '../src/renderingDOM'
 
 const toDoModule_ = toDoModule();
@@ -26,12 +27,12 @@ const addTaskToList = () => {
 };
 
 const taskFinished = (e) => {
-    console.log(toDoModule_.todolist);
+    console.log(todolist);
     const targetParent = e.target.parentNode;
     const taskTitle = targetParent.querySelector('.task-title').innerText;
     const taskDescription = targetParent.querySelector('.task-description').innerText;
 
-    toDoModule_.todolist.forEach(task => {
+    todolist.forEach(task => {
         // Check if the current task matches the clicked task
         if (task.title === taskTitle && task.description === taskDescription) {
             task.finished = !task.finished;
@@ -41,28 +42,24 @@ const taskFinished = (e) => {
 }
 
 const deleteTask = (e) => {
-
-    console.log(toDoModule_.todolist);
     const targetParent = e.target.parentNode.parentNode;
     const taskTitle = targetParent.querySelector('.task-title').innerText;
     const taskDescription = targetParent.querySelector('.task-description').innerText;
 
-    for(let i = 0; i < toDoModule_.todolist.length; i++)
+    for(let i = 0; i < todolist.length; i++)
     {
-        if(toDoModule_.todolist[i].title === taskTitle && toDoModule_.todolist[i].description === taskDescription)
-            toDoModule_.todolist.splice(i, 1);
+        if(todolist[i].title === taskTitle && todolist[i].description === taskDescription)
+            todolist.splice(i, 1);
     }
-
-    console.log(toDoModule_.todolist);
 };
 
 const taskImportant = (e) => {
-    console.log(toDoModule_.todolist);
+    console.log(todolist);
     const targetParent = e.target.parentNode.parentNode;
     const taskTitle = targetParent.querySelector('.task-title').innerText;
     const taskDescription = targetParent.querySelector('.task-description').innerText;
 
-    toDoModule_.todolist.forEach(task => {
+    todolist.forEach(task => {
         if (task.title === taskTitle && task.description === taskDescription) {
             task.important = !task.important;
         }
