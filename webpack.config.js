@@ -24,8 +24,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'To Do',
-            filename: './dist/index.html',
-            template: 'index.html',
+            filename: 'index.html',
+            template: './src/template.html',
         }),
     ],
 };
