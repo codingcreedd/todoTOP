@@ -41,7 +41,24 @@
     padding: 1% 1%;
     border-radius: 10px;
     margin-bottom: 20px;
+    gap: 30px;
 }
+
+.tasks .task .task-title{
+    width: 15%;
+    max-width: 15%;
+}
+
+.tasks .task .task-description {
+    font-size: 0.7rem;
+    max-width: 35%;
+    width: 35%;
+    color: rgb(49, 49, 49);
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
 
 .tasks .task .bx-radio-circle{
     margin-right: 20px;
@@ -50,15 +67,39 @@
     cursor: pointer;
 }
 
+.tasks .task .bx-radio-circle:hover{
+    color: green;
+}
+
+
 .tasks .task .task-nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: auto;
+    gap: 50px;
+}
+
+.tasks .task .bxs-star,
+.tasks .task .bxs-trash-alt,
+.tasks .task .bxs-pencil{
+    transition: 0.3s;
+}
+
+.tasks .task .bxs-star:hover{
+    color: rgb(197, 197, 37);
+}
+
+.tasks .task .bxs-trash-alt:hover{
+    color: red;
+}
+
+.tasks .task .bxs-pencil:hover{
+    color:var(--main-color);
 }
 
 .tasks .task .bx-calendar{
     position: relative;
-    margin-left: auto;
     margin-right: 50px;
     font-size: 1.1rem;
 }
@@ -67,24 +108,6 @@
     position: absolute;
     left: -6rem;
 }
-
-/*
-.tasks .task .bxs-star,
-.tasks .task .bxs-trash-alt{
-    margin-right: 50px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.tasks .task .bxs-trash-alt:hover{
-    color: red;
-}
-
-.tasks .task .bxs-star:hover{
-    color: var(--main-color)
-}
-*/
 
 /*task form*/
 .task-form-container{
@@ -98,21 +121,40 @@
     justify-content: center;
 }
 
+
+
 .task-form{
     width: 40%;
-    height: 200px;
+    text-align: center;
     background: white;
     border-radius: 20px;
     padding: 1% 1%;
+    font-style: italic;
+}
+
+.task-form h1{
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .task-form .task-input{
     border-radius: 10px;
     width: 100%;
     height: 40%;
-    border: 1px solid var(--main-color);
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.5);
+    border: none;
     padding: 10px;
     margin-bottom: 5%;
+}
+
+.task-form .task-input::placeholder{
+    opacity: 1;
+    color: var(--main-color);
+    font-style: italic;
+}
+
+.task-form .task-input.task-description{
+    height: 100px;
 }
 
 .task-form .task-input:focus{
@@ -122,28 +164,31 @@
 .task-form button{
     width: 50%;
     height: 50px;
-    background: transparent;
-    border: 1px solid green;
+    background: green;
     border-radius: 10px;
-    color: green;
+    color: white;
     transition: 0.5s;
+    border: none;
+    font-style: italic;
 }
 
 .task-form button:hover{
-    background: green;
-    color: white;
+    background: white;
+    color: green;
+    border: 1px solid green;
 }
 
 .task-form button ~ button{
-    color: red;
-    border: 1px solid red;
+    background: red;
+    border: none;
     margin-left: 15px;
     transition: 0.5s;
 }
 
 .task-form button ~button:hover{
-    background: red;
-    color: white;
+    background: white;
+    color: red;
+    border: 1px solid red;
 }
 
 
