@@ -104,10 +104,26 @@ const createTrashIcon = () => {
     return trashIcon;
 };
 
-const removeTasksFromOtherViews = () => {
-    const otherTaskContainerView = document.querySelector('.tasks-other-view');
-    while (otherTaskContainerView.firstChild) {
-        otherTaskContainerView.removeChild(otherTaskContainerView.firstChild);
+const removeTasksFromView = () => {
+    const taskContainer = document.querySelector('.tasks-home-view');
+    while (taskContainer.firstChild) {
+        taskContainer.removeChild(taskContainer.firstChild);
+    }
+}
+
+const lookForCheckedIcons = (radioButton, starIcon, title, description) => {
+    if(toDoModule_.todolist.length > 0)
+    {
+        toDoModule_.todolist.forEach(task => {
+           if(task.title === title && task.description === description)
+           {
+                if(task.completed === true)
+                    radioButton.style.color = 'green';
+                
+                if(task.important === true)
+                    starIcon.style.color = 'rgb(197, 197, 37)';
+           }
+        });
     }
 }
 
@@ -125,7 +141,7 @@ export const removeTaskFormInputs = (title, description) => {
 };
 
 // Function to add all elements to the task container and append it to the tasks container
-export const addTaskOnScreen = (title, description, screen = 'Home') => {
+export const addTaskOnScreen = (title, description) => {
     // Create task container
     const taskContainer = createTaskContainer();
 
@@ -137,7 +153,12 @@ export const addTaskOnScreen = (title, description, screen = 'Home') => {
     const calendarIcon = createCalendarIcon();
     const pencilIcon = createPencilIcon();
     const starIcon = createStarIcon();
+
+    
+
     const trashIcon = createTrashIcon();
+
+    lookForCheckedIcons(radioCircleIcon, starIcon, title, description);
 
     // Append elements to task navigation section
     taskNav.appendChild(calendarIcon);
@@ -152,11 +173,7 @@ export const addTaskOnScreen = (title, description, screen = 'Home') => {
     taskContainer.appendChild(taskNav);
 
     // Append task container to tasks container
-    let tasksContainer;
-    if(screen === 'Home')
-        tasksContainer = document.querySelector('.tasks-home-view');
-    else
-        tasksContainer = document.querySelector('.tasks-other-view');
+    const tasksContainer = document.querySelector('.tasks-home-view');
     
     tasksContainer.appendChild(taskContainer);
 };
@@ -172,10 +189,20 @@ const renderCertainView = (page) => {
     });
 }
 
+const renderHomeView = () => {
+    toDoModule_.todolist.forEach(task => {
+            addTaskOnScreen(task.title, task.description);
+    });
+}
+
 //The following function is necessary when a user switches from one page to another (home is not included)
 export const renderTasksOnScreen = (page) => {
-    removeTasksFromOtherViews();
-    renderCertainView(page);
+    removeTasksFromView();
+
+    if(page !== 'home')
+        renderCertainView(page);
+    else
+        renderHomeView();
 }
 
 

@@ -35,7 +35,7 @@ const taskFinished = (e) => {
     todolist.forEach(task => {
         // Check if the current task matches the clicked task
         if (task.title === taskTitle && task.description === taskDescription) {
-            task.finished = !task.finished;
+            task.completed = !task.completed;
         }
     });
 

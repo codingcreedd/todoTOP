@@ -15,7 +15,7 @@ export default function toDoModule() {
             important: false,
             today: false,
             ['this-week']: false,
-            finished: false,
+            completed: false,
             project: projectName
         }
     };

@@ -3,9 +3,6 @@ import domMethods from './domMethods.js';
 import {renderTaskForm, renderTasksOnScreen} from "../src/renderingDOM";
 
 const otherViewdisplayChange = () => {
-    const homeDisplay = document.querySelector('.tasks-home-view');
-    homeDisplay.style.display = 'none';
-    
     const addTaskButton = document.querySelector('.add-task-btn');
     addTaskButton.style.display = 'none';
     
@@ -19,11 +16,6 @@ const revertDisplayChangesInHome = () => {
     
     const addTaskText = document.getElementById('add-task-text');
     addTaskText.style.display = 'block';
-}
-
-const showOtherViewContainer = () => {
-    const otherViewContainer = document.querySelector('.tasks-other-view');
-    otherViewContainer.style.display = 'flex';
 }
 
 const changeHeadingName = (page) => {
@@ -44,25 +36,17 @@ const domModule = (() => {
     const homeNavButton = document.querySelector('.home-nav-btn');
     homeNavButton.addEventListener('click', () => {
         changeHeadingName('Home');
-        const otherViewContainer = document.querySelector('.tasks-other-view');
-        otherViewContainer.style.display = 'none';
 
         revertDisplayChangesInHome();
-        const homeDisplay = document.querySelector('.tasks-home-view');
-        homeDisplay.style.display = 'flex';
     });
 
     const navButtons = document.querySelectorAll('.nav');
     navButtons.forEach(navButton => {
         navButton.addEventListener('click', (e) => {
-            if(e.target.innerText !== 'Home')
-            {
                 console.log('clicked')
                 otherViewdisplayChange();
                 changeHeadingName(e.target.innerText)
-                showOtherViewContainer();
                 renderTasksOnScreen((e.target.innerText).toLowerCase().replace(/\s+/g, '-'));
-            }
         });
     });
 

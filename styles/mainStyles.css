@@ -86,3 +86,24 @@ body{
     margin-right: 20px;
     cursor:pointer;
 }
+
+/*projects*/
+.projects{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: var(--list-padding);
+    overflow: scroll;
+}
+
+.projects .project{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+}
+
+.projects .project:hover{
+
+}
