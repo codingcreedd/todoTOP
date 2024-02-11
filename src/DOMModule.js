@@ -13,6 +13,14 @@ const otherViewdisplayChange = () => {
     addTaskText.style.display = 'none';
 }
 
+const revertDisplayChangesInHome = () => {
+    const addTaskButton = document.querySelector('.add-task-btn');
+    addTaskButton.style.display = 'block';
+    
+    const addTaskText = document.getElementById('add-task-text');
+    addTaskText.style.display = 'block';
+}
+
 const domModule = (() => {
     const addTaskButton = document.querySelector('.add-task-btn');
     addTaskButton.addEventListener('click', renderTaskForm);
@@ -28,6 +36,7 @@ const domModule = (() => {
         const otherViewContainer = document.querySelector('.tasks-other-view');
         otherViewContainer.style.display = 'none';
 
+        revertDisplayChangesInHome();
         const homeDisplay = document.querySelector('.tasks-home-view');
         homeDisplay.style.display = 'flex';
     });
