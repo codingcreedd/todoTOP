@@ -14,11 +14,17 @@ const cancelTaskFromList = () => {
 const addTaskToList = () => {
     const taskTitle = document.querySelector('.task-title-input');
     const taskDescription = document.querySelector('.task-description-input');
+    const pageTitle = document.querySelector('.page-title');
 
     if(taskTitle.value !== '')
-    {
-        const taskObject = toDoModule_.createToDo(taskTitle.value, taskDescription.value);
+    {   
+        let projectName = '';
+        if(pageTitle.innerText !== 'Home')
+            projectName = pageTitle.innerText;
+
+        const taskObject = toDoModule_.createToDo(taskTitle.value, taskDescription.value, projectName);
         toDoModule_.addToDo(taskObject);
+        console.log(todolist)
         addTaskOnScreen(taskTitle.value, taskDescription.value);
         removeTaskFormInputs(taskTitle, taskDescription);
         cancelTaskFromList();

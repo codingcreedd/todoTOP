@@ -191,7 +191,8 @@ const renderCertainView = (page) => {
 
 const renderHomeView = () => {
     toDoModule_.todolist.forEach(task => {
-            addTaskOnScreen(task.title, task.description);
+            if(task.project === '')
+                addTaskOnScreen(task.title, task.description);
     });
 }
 

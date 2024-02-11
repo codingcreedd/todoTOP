@@ -10,9 +10,9 @@ const otherViewdisplayChange = () => {
     addTaskText.style.display = 'none';
 }
 
-const revertDisplayChangesInHome = () => {
+export const revertDisplayChangesInHome = () => {
     const addTaskButton = document.querySelector('.add-task-btn');
-    addTaskButton.style.display = 'block';
+    addTaskButton.style.cssText = "display: block;";
     
     const addTaskText = document.getElementById('add-task-text');
     addTaskText.style.display = 'block';
@@ -21,6 +21,12 @@ const revertDisplayChangesInHome = () => {
 const changeHeadingName = (page) => {
     const pageTitle = document.querySelector('.page-title');
     pageTitle.innerText = `${page}`;
+}
+
+const changeHeadingLogo = () => {
+    const pageIcon = document.querySelector('.page-icon');
+    pageIcon.classList.remove('bx', 'bx-folder-open');
+    pageIcon.classList.add('bx', 'bx-home-alt');
 }
 
 const domModule = (() => {
@@ -33,19 +39,20 @@ const domModule = (() => {
     const cancelTaskButton = document.querySelector('.cancel-input-btn');
     cancelTaskButton.addEventListener('click', domMethods.cancelTaskFromList);
 
-    const homeNavButton = document.querySelector('.home-nav-btn');
-    homeNavButton.addEventListener('click', () => {
-        changeHeadingName('Home');
-
-        revertDisplayChangesInHome();
-    });
-
     const navButtons = document.querySelectorAll('.nav');
     navButtons.forEach(navButton => {
         navButton.addEventListener('click', (e) => {
                 console.log('clicked')
+                changeHeadingLogo();
                 otherViewdisplayChange();
-                changeHeadingName(e.target.innerText)
+
+                changeHeadingName(e.target.innerText);
+                if(e.target.innerText === 'Home')
+                {
+                    revertDisplayChangesInHome();
+                    changeHeadingName(e.target.innerText);
+                }
+
                 renderTasksOnScreen((e.target.innerText).toLowerCase().replace(/\s+/g, '-'));
         });
     });

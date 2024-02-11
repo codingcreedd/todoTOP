@@ -11,7 +11,6 @@ export default function toDoModule() {
             title: title,
             description: description,
             page: 'Home',
-            status: 'pending', //two statuses: pending & done
             important: false,
             today: false,
             ['this-week']: false,
