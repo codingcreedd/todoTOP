@@ -1,4 +1,5 @@
 import domMethods from './domMethods.js';
+import toDoModule from './index.js';
 
 // Function to create the task container
 const createTaskContainer = () => {
@@ -99,6 +100,22 @@ const createTrashIcon = () => {
     return trashIcon;
 };
 
+const removeTasksFromOtherViews = () => {
+    const otherTaskContainerView = document.querySelector('.tasks-other-view');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+const renderCertainView = (page) => {
+    const toDoModule_ = toDoModule();
+    toDoModule_.todolist.forEach(task => {
+        if(task[`${page}`] === true)
+        {
+            addTaskOnScreen(task.title, task.description, page);
+        }
+    });
+}
 
 //RENDERING METHODS
 
@@ -113,7 +130,7 @@ export const removeTaskFormInputs = (title, description) => {
 };
 
 // Function to add all elements to the task container and append it to the tasks container
-export const addTaskOnScreen = (title, description) => {
+export const addTaskOnScreen = (title, description, screen = 'Home') => {
     // Create task container
     const taskContainer = createTaskContainer();
 
@@ -140,14 +157,20 @@ export const addTaskOnScreen = (title, description) => {
     taskContainer.appendChild(taskNav);
 
     // Append task container to tasks container
-    const tasksContainer = document.querySelector('.tasks');
+    let tasksContainer;
+    if(screen === 'Home')
+        tasksContainer = document.querySelector('.tasks-home-view');
+    else
+        tasksContainer = document.querySelector('.tasks-other-view');
+    
     tasksContainer.appendChild(taskContainer);
 };
 
 
 //The following function is necessary when a user switches from one page to another (home is not included)
 export const renderTasksOnScreen = (page) => {
-    //use todolist array later (when you implement this function & delete this comment)
+    if(page === 'important')
+        renderCertainView(page);
 }
 
 
