@@ -178,17 +178,30 @@
     border: 1px solid green;
 }
 
-.task-form button ~ button{
+.task-form button + button{
     background: red;
     border: none;
     margin-left: 15px;
     transition: 0.5s;
 }
 
-.task-form button ~button:hover{
+.task-form button +button:hover{
     background: white;
     color: red;
     border: 1px solid red;
+}
+
+.task-form button + button + button{
+    background: var(--main-color);
+    border: none;
+    margin-left: 15px;
+    transition: 0.5s;
+}
+
+.task-form button +button +button:hover{
+    background: white;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
 }
 
 .hidden{
