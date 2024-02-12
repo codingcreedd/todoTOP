@@ -7,6 +7,12 @@ const toDoModule_ = toDoModule();
 //LOGIC
 
 const cancelTaskFromList = () => {
+    const titleFormField = document.querySelector('.task-title-input');
+    const descriptionFormField = document.querySelector('.task-description-input');
+
+    titleFormField.value = '';
+    descriptionFormField.value = '';
+
     const taskFormContainer = document.querySelector('.task-form-container');
     taskFormContainer.style.display = 'none';
 };

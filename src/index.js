@@ -4,8 +4,6 @@ import '../styles/mainStyles.css';
 export const todolist = [];
 
 export default function toDoModule() {
-    const currentScreen = 'Home';
-
     const createToDo = (title, description, projectName = '') => {
         return {
             title: title,

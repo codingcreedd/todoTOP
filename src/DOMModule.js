@@ -31,7 +31,20 @@ const changeHeadingLogo = () => {
 
 const domModule = (() => {
     const addTaskButton = document.querySelector('.add-task-btn');
-    addTaskButton.addEventListener('click', renderTaskForm);
+    addTaskButton.addEventListener('click', () => {
+        const taskForm = document.querySelector('.task-form');
+        const submitButton = taskForm.querySelector('.add-input-btn');
+        submitButton.style.display = 'block';
+
+        const updateTaskButton = taskForm.querySelector('.update-input-btn');
+        updateTaskButton.style.display = 'none';
+
+        const titleFormField = document.querySelector('.task-title-input');
+        const descriptionFormField = document.querySelector('.task-description-input');
+        titleFormField.value = '';
+        descriptionFormField.value = '';
+        renderTaskForm();
+    });
 
     const submitTaskButton = document.querySelector('.add-input-btn');
     submitTaskButton.addEventListener('click', domMethods.addTaskToList);

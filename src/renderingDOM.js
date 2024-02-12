@@ -1,5 +1,5 @@
 import domMethods from './domMethods.js';
-import { todolist } from './index.js';
+import { todolist} from './index.js';
 import toDoModule from ".";
 
 
@@ -64,10 +64,68 @@ const createCalendarIcon = () => {
     return calendarIcon;
 };
 
+const editToDoList = (title, description, newTitle, newDescription) => {
+    toDoModule_.todolist.forEach(task => {
+        if(task.title === title && task.description === description){
+            task.title = newTitle;
+            task.description = newDescription;
+        }
+    });
+}
+
+const editTaskForm = (e) => {
+    const taskTitleInput = document.querySelector('.task-title-input');
+    const taskDescriptionInput = document.querySelector('.task-description-input');
+
+    const oldTitle = taskTitleInput.value;
+    const oldDescription = taskDescriptionInput.value;
+
+    const taskForm = document.querySelector('.task-form');
+    const submitButton = taskForm.querySelector('.add-input-btn');
+    submitButton.style.display = 'none';
+
+    const updateTaskButton = taskForm.querySelector('.update-input-btn');
+    updateTaskButton.style.display = 'block';
+
+    
+    renderTaskForm();
+
+    updateTaskButton.addEventListener('click', () => {
+        const targetParent = e.target.parentNode.parentNode;
+        const taskTitle = targetParent.querySelector('.task-title');
+        const taskDescription = targetParent.querySelector('.task-description');
+
+        taskTitle.innerText = taskTitleInput.value;
+        taskDescription.innerText = taskDescriptionInput.value;
+
+        editToDoList(oldTitle, oldDescription, taskTitle.innerText, taskDescription.innerText);
+
+        taskForm.parentNode.style.display = 'none';
+        console.log(toDoModule_.todolist)
+    });
+    
+};
+
 // Function to create the pencil icon
 const createPencilIcon = () => {
     const pencilIcon = document.createElement('i');
     pencilIcon.classList.add('bx', 'bxs-pencil');
+
+    pencilIcon.addEventListener('click', e => {
+        const targetParent = e.target.parentNode.parentNode;
+        const taskTitle = targetParent.querySelector('.task-title').innerText;
+        const taskDescription = targetParent.querySelector('.task-description').innerText;
+
+        const titleFormField = document.querySelector('.task-title-input');
+        const descriptionFormField = document.querySelector('.task-description-input');
+
+        titleFormField.value = taskTitle;
+        descriptionFormField.value = taskDescription;
+
+        editTaskForm(e);
+
+    });
+
     return pencilIcon;
 };
 
