@@ -1,5 +1,4 @@
 import domMethods from './domMethods.js';
-
 import {renderTaskForm, renderTasksOnScreen} from "../src/renderingDOM";
 
 const otherViewdisplayChange = () => {
