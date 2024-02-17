@@ -1,6 +1,7 @@
 import toDoModule from ".";
 import { todolist } from "./index.js";
 import { removeTaskFormInputs, addTaskOnScreen } from "../src/renderingDOM";
+import {checkTaskTitleValidation, checkTaskDescriptionValidation } from "./validation.js";
 
 const toDoModule_ = toDoModule();
 
@@ -24,7 +25,7 @@ const addTaskToList = () => {
   const taskDescription = document.querySelector(".task-description-input");
   const pageTitle = document.querySelector(".page-title");
 
-  if (taskTitle.value !== "") {
+  if (checkTaskTitleValidation() === true && checkTaskDescriptionValidation() === true) {
     let projectName = "";
     if (pageTitle.innerText !== "Home") projectName = pageTitle.innerText;
 
