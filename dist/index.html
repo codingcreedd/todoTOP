@@ -53,8 +53,11 @@
         <section class="task-form-container" style="display: none;">
             <div class="task-form">
                 <h1>Add Task</h1>
-                <input class="task-input task-title-input" type="text" placeholder="Title">
-                <input type="text" class="task-input task-description-input" placeholder="Description">
+                <input class="task-input task-title-input" type="text" placeholder="Title" required minlength="3">
+                <input type="text" class="task-input task-description-input" placeholder="Description" minlength="5">
+               
+                <div class="error-div">dfsdf</div>
+
                 <div style="display: flex;">
                     <button class="add-input-btn">Add</button>
                     <button class="cancel-input-btn">Cancel</button>
